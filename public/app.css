@@ -1,0 +1,115 @@
+body{
+    background:blue;
+}
+#sidebar{
+    padding-top:0em;
+    margin-top:0em;
+    width:15em;
+}
+
+/* .nv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 50px;
+    background-color: #00a087;
+  } */
+.navbar-toggle{
+z-index:1;
+}
+.navbar-inverse .navbar-nav>li>a
+{
+color:#FFFFFF;
+}
+ .navbar-nav>li>a{
+  font-size:  13px;
+  font-family: 'Raleway', sans-serif;
+}
+.navbar-brand{
+  font-family: 'Raleway', sans-serif;
+  font-size: 25px;
+  font-weight: bolder;
+}
+#btnctr{
+    text-align:center;
+
+}
+
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 160px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 0; /* Stay on top */
+    top: 8.25%; /* Stay at the top */
+    left: 0;
+    margin-top:0px;
+    background-color: #111; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    font-family: 'Raleway', sans-serif;
+}
+.sidenav-right {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 350px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 0; /* Stay on top */
+  top: 8%; /* Stay at the top */
+  right: 0;
+  margin-top:0px;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  color: darkgray; 
+}
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Style page content */
+  .main {
+    margin-left: 160px; /* Same as the width of the sidebar */
+    margin-top:25px;
+    padding: 0px 10px;
+    top:50%;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .caption{
+      text-align:center;
+  }
+.tmb{
+    text-align:bottom;
+    margin-right:20px;
+    margin-left:20px;
+    font-family: 'Bree Serif', serif;
+    font-size:20px;
+
+}
+ .tmb2{
+  height:250px;
+  width:300px;
+  background-size: cover;
+  background-position: center;
+  margin: 10px 25px 5px 25px;
+
+} 
