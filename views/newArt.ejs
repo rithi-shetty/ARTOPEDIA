@@ -1,0 +1,18 @@
+<%- include ("partials/header.ejs") %>
+<div class="signup">
+    <form action="/artopedia/profilee/<%= profile._id %>/art" method="post" >
+        <input type="text" name="art[name]" placeholder="Title">
+        <input type="text" name="art[image]" placeholder="imageURL">
+        <select name="art[category]" id="Category">
+            <option>Nature</option>
+            <option>Folk</option>
+            <option>Abstract</option>
+            <option>Portrait</option>
+            <option>Others</option>
+        </select>
+        
+        <button>SUBMIT</button>
+    </form> 
+</div>
+
+<%- include ("partials/footer.ejs") %>

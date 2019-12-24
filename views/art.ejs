@@ -1,4 +1,5 @@
 <%- include ("partials/header.ejs") %>
+<% var id; %>
 <!-- <div>
 <div class="list-group" id="sidebar" >
     <a href="#" class="list-group-item list-group-item-action active">
@@ -19,17 +20,22 @@
   </div>
   <div class="main">
   <div class="row">
-    <% art.forEach(function(cmp){ %>
+    <% art.forEach(function(art){ %>
     <div class="col-sm-6 col-md-4">
       
       <div class="thumbnail">
-       <img src="<%= cmp.image %>" alt="Image" style="width:250px;height:260px">
+       <img src="<%= art.image %>" alt="Image" style="width:250px;height:260px">
         <div class="caption">
          
         
           <p><a href="" class="btn btn-danger btn-md" role="button"><i class="far fa-heart"></i></a> 
-            <span class="tmb"><%= cmp.name %></span>
-            <a href="/artopedia/profile" class="btn btn-primary btn-md" role="button"><i class="fas fa-address-card"></i></a></p>
+            <span class="tmb"><%= art.name %></span>
+            <% profile.forEach(function(profile){ %>
+            <% if (profile.author.username == art.author.username) { %>
+              <% id=profile._id %>
+            <% } %>
+            <% }); %>
+            <a href="/artopedia/profilee/<%= id %>" class="btn btn-primary btn-md" role="button"><i class="fas fa-address-card"></i></a></p>
         </div>
       </div>
     </div>

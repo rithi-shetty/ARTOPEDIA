@@ -1,12 +1,13 @@
 <%- include ("partials/header.ejs") %>
-<div class="sidenav-right">
-    <div class="profile" >
-      <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="DP" class="tmb2">
-      <h3 >MADHUSHREE</h3>
-      <p>Nothing beautiful asks for attention!</p>
-      <br><br>
-      <p>CONTACT:</p>
-      <p>  <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>    8095911110</p>
-      <p>  <i class="fa fa-envelope" aria-hidden="true"></i>    m@gmail.com</p>
-    </div>
+<div class="signup">
+    <form action="/artopedia/profile" method="post" >
+        <input type="text" name="name" placeholder="name">
+        <input type="text" name="image" placeholder="imageURL">
+        <input type="text" name="description" placeholder="Description">
+        <input type="email" name="email" placeholder="Email">
+        <input type="number" name="phone" placeholder="Phone number">
+        <button>Submit</button>
+    </form> 
+</div>
+
 <%- include ("partials/footer.ejs") %>

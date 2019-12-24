@@ -1,21 +1,33 @@
 <%- include ("partials/header.ejs") %>
-
+<% var id; %>
     <div class="container" id="btnctr" >
             <h1>Welcome to ARTOPEDIA</h1>
             <p>View our handpicked campgrounds from all over the world</p>
             <p>
     
-                <a class="btn btn-primary btn-large " href="/campgrnd/new">
+                <a class="btn btn-primary btn-large " href="/artopedia/art">
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>ART</a>
                 
-                <a class="btn btn-primary btn-large" href="/campgrnd/new">POETRY</a>
+                <a class="btn btn-primary btn-large" href="/artopedia/poem">POETRY</a>
             </p>
             <p>
-                <a class="btn btn-primary btn-large" href="/campgrnd/new">MUSIC</a>
-                <a class="btn btn-primary btn-large" href="/campgrnd/new">DANCE</a>
+                <a class="btn btn-primary btn-large" href="/artopedia/music">MUSIC</a>
+                <a class="btn btn-primary btn-large" href="/artopedia/dance">DANCE</a>
             </p>
      </div>
-   
+    
+     <% if(currentUser){ %>
+        <% profile.forEach(function(pr){ %>
+            <% console.log(pr.author.username) %>
+            <% if ((pr.author.username) == (currentUser.username)) {%>
+                <% id=pr._id ;%>
+            <% } %>
+        <% }); %>
+        <a class="btn btn-primary btn-large" href="/artopedia/profilee/<%= id %>">Profile</a>
+        <% } %>
+      
+    
+     
 
 <%- include ("partials/footer.ejs") %>
 

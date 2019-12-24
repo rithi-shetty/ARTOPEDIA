@@ -25,17 +25,22 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				 </button>
-				 <a href="#" class="navbar-brand">ARTOPEDIA</a>
+				 <a href="/" class="navbar-brand">ARTOPEDIA</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav">
-		<li><a href="#">HOME</a></li>
 		<li><a href="#">ABOUT</a></li>
 		<li><a href="#">CONTACT</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-		<li><a href="#">SIGN UP<i class="fas fa-user-plus"></i></a></li>
-		<li><a href="#">LOGIN<i class="fas fa-user"></i></a></li>
+		
+		<% if(!currentUser){ %>	
+		<li><a href="/artopedia/register">SIGN UP<i class="fas fa-user-plus"></i></a></li>
+		<li><a href="/artopedia/login">LOGIN<i class="fas fa-user"></i></a></li>
+		<% }else { %>
+			<li><a href="/artopedia/profilee/<%= currentUser._id %>"><%= currentUser.username %></a></li>
+			<li><a href="/artopedia/logout">Logout<i class="fas fa-user"></i></a></li>
+			<% } %>
 		</ul>
 		</div>
 		</div>

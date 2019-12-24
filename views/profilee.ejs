@@ -1,0 +1,43 @@
+<%- include ("partials/header.ejs") %>
+
+
+
+<div class="main2">
+<div class="row">
+  <% profile.art.forEach(function(cmp){ %>
+  <div class="col-sm-6 col-md-4">
+    
+    <div class="thumbnail gbh ">
+     <img src="<%= cmp.image %>" alt="Image" style="width:250px;height:260px">
+      <div class="caption">
+       
+      
+        <p><a href="" class="btn btn-danger btn-md" role="button"><i class="far fa-heart"></i></a> 
+          <span class="tmb"><%= cmp.name %></span>
+
+          <a href="/artopedia/profilee/<%= profile._id %>" class="btn btn-primary btn-md" role="button"><i class="fas fa-address-card"></i></a></p>
+      </div>
+    </div>
+  </div>
+
+  <% }); %>
+</div>
+</div>
+
+
+
+<div class="sidenav-right">
+    <div class="profile" >
+      
+      <img src="<%= profile.image %>">
+      <h3 ><%= profile.name %></h3>
+      <p><%= profile.description %></p>
+      <br><br>
+      <p>CONTACT:</p>
+      <p>  <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>    <%= profile.phone %></p>
+      <p>  <i class="fa fa-envelope" aria-hidden="true"></i>    <%= profile.email %></p>
+     <% if(currentUser){ %>
+      <a class="btn btn-primary btn-large" href="/artopedia/profilee/<%= profile._id %>/art/new">Add New</a>
+      <% } %>
+    </div>
+<%- include ("partials/footer.ejs") %>
