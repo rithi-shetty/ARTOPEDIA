@@ -3,13 +3,14 @@ var artSchema=new mongoose.Schema({
     name: String,
     image: String,
     likes: Number,
-    type: String,
-    // author: {
-    //     id: {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: "User"
-    //     }
-    // }
+    category: String,
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username: String
+    }
 });
 
 
