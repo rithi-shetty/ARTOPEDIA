@@ -7,6 +7,9 @@ body{
     width:15em;
 }
 
+p.first{
+  margin-top:250px;
+}
 /* .nv {
     position: fixed;
     top: 0;
@@ -82,8 +85,15 @@ color:#FFFFFF;
   
   /* Style page content */
   .main {
-    margin-left: 160px; /* Same as the width of the sidebar */
+    margin-left: 500px; /* Same as the width of the sidebar */
     margin-top:25px;
+    padding: 0px 10px;
+    top:50%;
+  }
+
+  div.roww{
+    margin-left: 130px; /* Same as the width of the sidebar */
+    margin-top:30px;
     padding: 0px 10px;
     top:50%;
   }
@@ -121,14 +131,39 @@ color:#FFFFFF;
 
 div.gbh{
  width:300px;
- height: 350px;
+ height: 330px;
+ 
  /* margin-top:40px;
  margin-left: 20px; */
 }
 
 div.main2 {
   margin-right: 350px; /* Same as the width of the sidebar */
-  margin-top:25px;
+  margin-top:75px;
   padding: 0px 10px;
   
 }
+
+.textarea{
+  background: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHCggIBgYKBgYHCAoPBgUJDQ8IFRAWIBEWGyASHxMYHCggJCYlGx8TMjEqJSkrLjo6Fx8/ODMsNygtLisBCgoKDQ0NDw0NDisZFRkrNysrKysrLSsrKysrLSsrKysrKys3KysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIASwAqAMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAAAAQMHAv/EABsQAQEAAgMBAAAAAAAAAAAAAAABEVESMdGx/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQIEAP/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwDrgCmwKFIAClACBFQgAISgFIioQAUhACkqLUIbAMraFCkABSgBAgEABSgBAioQFCkIAUoAQ2AZW0AIAQpACEChAAUoAQItQgSqhSAEIAQ2AZW0AKRFQgAIShQpACEAIKhQgRUKQAhACGwDK2gBSJVSkABCUApASkABCUApEVCAAhACGwDK2ABAlVKQAEIAUiVUpAAQgBSIqEBQpCAFLYBlbShQgRUIAFJQBwEqoQAEIAUiLUICgQgBS2AZm0oUcBFRSQEIACBFRwAFJQAgqLUIEVHAAKWwDM2gBAgFIipSAAgRUIAKUoAQlAIEVHJAFBsAytoARUAKRKqUgAIEVCBKqUpACEAIEVCmgBDYBlbQAipQoUiKhAAQIUKRKqEABCAECLUKaAENgGVtAClKFCBFQgAIShQpEVCAAhACkqLUIoAQ2KFZW0AKUAIEVCAAhKAUiKhABSEAKSoqEABDYoVlbQApQAgQCAApQAgRUIChSEAKUAIACGwDK2gIUgBCBQgAKUAIEWoQJVQpACEAIACGwDK2CKhAAQlChSAEIAQlChAioUgBCAEABDYBlbBKqUgAIQApEVKQAEJQCkRUIAKQgBSAFzYBlbBKqUgAIQApEqpSAAhACkRUIChSEAKQAubUKMrYIqEACkoA4CVUIACEAKRFqECZl6vXavPGTwhczcMzacZ9OM0UrmbQxAuf/9k=");
+  background-size:cover;
+  background-position: center;
+  height:270px;
+  width:280px;
+  border:solid black 2px;
+  color: black;
+  font-family: 'Courier Prime', monospace;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
