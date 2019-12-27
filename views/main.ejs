@@ -1,33 +1,45 @@
 <%- include ("partials/header.ejs") %>
 <% var id; %>
+<div class="main3">
     <div class="container" id="btnctr" >
-            <h1>Welcome to ARTOPEDIA</h1>
-            <p>View our handpicked campgrounds from all over the world</p>
-            <p>
+        <i class="fab fa-ravelry loading wave abc"></i>
+            <div class="loading wave"><p>ARTOPEDIA</p></div>
+            <div>
     
-                <a class="btn btn-primary btn-large " href="/artopedia/art">
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>ART</a>
-                
-                <a class="btn btn-primary btn-large" href="/artopedia/poem">POETRY</a>
-            </p>
-            <p>
-                <a class="btn btn-primary btn-large" href="/artopedia/music">MUSIC</a>
-                <a class="btn btn-primary btn-large" href="/artopedia/dance">DANCE</a>
-            </p>
+               
+				<p class="first"> 
+					
+					<a href="/artopedia/art"><button class="btn btn-3 btn-3e icon-arrow-right a1" >ARTWORK</button></a>
+					
+					<a href="/artopedia/writing"><button class="btn btn-3 btn-3e icon-arrow-right a1">WRITING</button></a>
+				</p>
+		
+				<p>
+					
+					<a href="/artopedia/music"><button class="btn btn-3 btn-3e icon-arrow-right" id="aa">MUSICA</button></a>
+				
+					
+					<a href="/artopedia/dance"><button class="btn btn-3 btn-3e icon-arrow-right" id="bb">DANCE</button></a>
+				</p>
+		         
+                <% if(currentUser){ %>
+                    <% profile.forEach(function(pr){ %>
+                        <% console.log(pr.author.username) %>
+                        <% if ((pr.author.username) == (currentUser.username)) {%>
+                            <% id=pr._id ;%>
+                        <% } %>
+                    <% }); %>
+                    <a href="/artopedia/profilee/<%= id %>"><button class="btn btn-3 btn-3e icon-arrow-right">GOTO</button></a>
+                    <!-- <a class="btn btn-primary btn-large" href="/artopedia/profilee/<%= id %>">Profile</a> -->
+                    <% } %>
+                </div>
+             
      </div>
     
-     <% if(currentUser){ %>
-        <% profile.forEach(function(pr){ %>
-            <% console.log(pr.author.username) %>
-            <% if ((pr.author.username) == (currentUser.username)) {%>
-                <% id=pr._id ;%>
-            <% } %>
-        <% }); %>
-        <a class="btn btn-primary btn-large" href="/artopedia/profilee/<%= id %>">Profile</a>
-        <% } %>
-      
-    
-     
 
+    
+			
+     
+    </div>
 <%- include ("partials/footer.ejs") %>
 

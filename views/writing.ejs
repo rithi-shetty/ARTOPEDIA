@@ -13,38 +13,39 @@
   </div> -->
   <div class="sidenav">
     <a href="/artopedia/art/toppost">TOP POSTS</a>
-    <a href="/artopedia/art/Nature">NATURE</a>
-    <a href="/artopedia/art/Portrait">PORTRAIT</a>
-    <a href="/artopedia/art/Abstract">ABSTRACT</a>
-    <a href="/artopedia/art/Folk">FOLK</a>
-    <a href="/artopedia/art/Others">OTHERS</a>
+    <a href="/artopedia/writing/Nature">NATURE</a>
+    <a href="/artopedia/writing/Love">LOVE</a>
+    <a href="/artopedia/writing/Friendship">FRIENDSHIP</a>
+    <a href="/artopedia/writing/Patriotic">PATRIOTIC</a>
+    <a href="/artopedia/writing/Life">LIFE</a>
+    <a href="/artopedia/writing/Others">OTHERS</a>
   </div>
   <div class="main">
   <div class="roww">
-    <% art.forEach(function(art){ %>
+    <% writing.forEach(function(writing){ %>
     <div class="col-sm-6 col-md-4">
       <% profile.forEach(function(profile){ %>
-        <% if (profile.author.username == art.author.username) { %>
+        <% if (profile.author.username == writing.author.username) { %>
           <% id=profile._id %>
           <% id2=profile.author.id %>
         <% } %>
         <% }); %>
       
       <div class="thumbnail">
-       <img src="<%= art.image %>" alt="Image" style="width:250px;height:260px">
+        <textarea class="textarea" readonly noscroll><%= writing.writing %></textarea>
         <div class="caption">
          
          
-          <p><a href="#" class="btn btn-danger btn-md" role="button" onclick="Increment()"><i class="far fa-heart"></i></a> 
+          <p><a href="#" class="btn btn-danger btn-md" role="button" ><i class="far fa-heart"></i></a> 
             <% if(currentUser && (id2.equals(currentUser._id))){ %>
-            <a href="/artopedia/profilee/<%= id %>/art/<%= art._id %>/edit" class="btn btn-primary btn-md" role="button"><i class="fas fa-edit"></i></a>
+            <a href="/artopedia/profilee/<%= id %>/writing/<%= writing._id %>/edit" class="btn btn-primary btn-md" role="button"><i class="fas fa-edit"></i></a>
            <% } %>
-            <span class="tmb"><%= art.name %></span>
+            <span class="tmb"><%= writing.name %></span>
          
             <a href="/artopedia/profilee/<%= id %>" class="btn btn-primary btn-md" role="button"><i class="fas fa-address-card"></i></a>
             <% if(currentUser && (id2.equals(currentUser._id))){ %>
             
-            <form id="delete_post" action="/artopedia/profilee/<%= id %>/art/<%= art._id %>?_method=DELETE" method="POST">
+            <form id="delete_post" action="/artopedia/profilee/<%= id %>/writing/<%= writing._id %>?_method=DELETE" method="POST">
             
            <button style="border: none;" class="btn btn-primary btn-md"><i class="fas fa-trash-alt"></i></button>
 
@@ -57,27 +58,5 @@
     </div>
     <% }); %>
   </div>
-
-  </div>
-  
-
-
-
-
-
-  <!-- <div class="main">
-  <div class="row" style="display:flex;flex-wrap:wrap">
-<% art.forEach(function(cmp){ %>
-    <div class="col-md-3 col-sm-6">
-        <div class="thumbnail">
-           
-            <div class="caption">
-                <h4> <%= cmp.name %></h4>
-            </div>
-        </div>
-
-    </div>
-    <% }); %>
- </div>
-</div> -->
+</div>
 <%- include ("partials/footer.ejs") %>

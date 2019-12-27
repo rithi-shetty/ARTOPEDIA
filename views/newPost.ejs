@@ -1,0 +1,37 @@
+<%- include ("partials/header.ejs") %>
+<div class="signup">
+    <% console.log(profile.category) %>
+    <% if(profile.category == "Art"){ %>
+    <form action="/artopedia/profilee/<%= profile._id %>/art" method="post" >
+        <input type="text" name="art[name]" placeholder="Title">
+        <input type="text" name="art[image]" placeholder="imageURL">
+        <select name="art[category]" id="Category" required>
+            <option>Nature</option>
+            <option>Folk</option>
+            <option>Abstract</option>
+            <option>Portrait</option>
+            <option>Others</option>
+        </select>
+        
+        <button>SUBMIT</button>
+    </form> 
+    <% } %>
+    <% if(profile.category === "Writing"){ %>
+        <form action="/artopedia/profilee/<%= profile._id %>/writing" method="post" >
+            <input type="text" name="writing[name]" placeholder="Title">
+            <!-- <input type="text" name="art[image]" placeholder="imageURL"> -->
+            <textarea name="writing[writing]" placeholder="Write"></textarea>
+            <select name="writing[category]" id="Category" required>
+                <option>Nature</option>
+                <option>Love</option>
+                <option>Friendship</option>
+                <option>Patriotic</option>
+                <option>Life</option>
+                <option>Others</option>
+            </select>
+            <button>SUBMIT</button>
+        </form> 
+        <% } %>
+</div>
+
+<%- include ("partials/footer.ejs") %>
