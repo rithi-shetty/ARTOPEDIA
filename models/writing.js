@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
-var artSchema=new mongoose.Schema({
+var writingSchema=new mongoose.Schema({
     name: String,
-    image: String,
+    writing : String,
     likes:[
          {
             type: mongoose.Schema.Types.ObjectId,
@@ -21,4 +21,4 @@ var artSchema=new mongoose.Schema({
 
 
 
-module.exports = mongoose.model("Art", artSchema);
+module.exports = mongoose.model("Writing", writingSchema);
