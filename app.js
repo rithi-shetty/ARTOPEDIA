@@ -6,13 +6,17 @@ var LocalStrategy=require("passport-local");
 var bodyParser = require("body-parser");
 Profile        = require("./models/profile.js"),
 Art            = require("./models/art.js"),
+Writing        = require("./models/writing.js"),
 User           = require("./models/user.js"),
 seedDB         = require("./seeds.js");
+methodOverride =require("method-override");
+middleware     =require("./middleware");
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 mongoose.connect("mongodb://localhost:27017/artopedia",{useNewUrlParser : true, useUnifiedTopology: true });
-
+app.use(methodOverride("_method"));
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
     secret: "Once again Rusty wins cutest dog!",
@@ -103,16 +107,7 @@ app.use(function(req, res, next){
 //     }
 // });
 // var Art = mongoose.model("Art",artSchema);
-var art=[
-{name:"Rithika",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH-RH9O4PgcNwkAsFZx55dn48ENTBRiJ1XHilOojEggS0-_x1jpg&s"},
-{name:"Rithika",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQSg6AjjMjTP7Pog09YJBq-dOmc7RY9AGGd_oEA3rjCDp5O3B1Ng&s"},
-{name:"Rithika",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH-RH9O4PgcNwkAsFZx55dn48ENTBRiJ1XHilOojEggS0-_x1jpg&s"},
-{name:"Rithika",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQSg6AjjMjTP7Pog09YJBq-dOmc7RY9AGGd_oEA3rjCDp5O3B1Ng&s"},
-{name:"Rithika",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH-RH9O4PgcNwkAsFZx55dn48ENTBRiJ1XHilOojEggS0-_x1jpg&s"},
-{name:"Rithika",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQSg6AjjMjTP7Pog09YJBq-dOmc7RY9AGGd_oEA3rjCDp5O3B1Ng&s"},
-{name:"Rithika",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH-RH9O4PgcNwkAsFZx55dn48ENTBRiJ1XHilOojEggS0-_x1jpg&s"},
-{name:"Rithika",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQSg6AjjMjTP7Pog09YJBq-dOmc7RY9AGGd_oEA3rjCDp5O3B1Ng&s"}
-];
+
 
 
 app.get("/",function(req,res){
@@ -127,7 +122,7 @@ app.get("/",function(req,res){
    
 });
 
-app.get("/artopedia/art",function(req,res){
+app.get("/artopedia/art",middleware.isLoggedIn,function(req,res){
     Profile.find({},function(err,allProfile){
         if(err){
             console.log(err);
@@ -145,8 +140,47 @@ app.get("/artopedia/art",function(req,res){
     }
 });
 });
-app.get("/artopedia/poem",function(req,res){
-    res.render("poem.ejs");
+
+app.get("/artopedia/art/:category",function(req,res){
+    
+    Profile.find({},function(err,allProfile){
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log(req.params.category);
+            Art.find({"category":req.params.category},function(err,allArt){
+                if(err){
+                    console.log(err);
+                }
+                else{
+            console.log(allArt);
+            res.render("art.ejs",{art:allArt,profile:allProfile});
+                }
+        });
+    }
+});
+});
+
+
+app.get("/artopedia/writing",function(req,res){
+   
+    Profile.find({},function(err,allProfile){
+        if(err){
+            console.log(err);
+        }
+        else{
+            Writing.find({},function(err,allWriting){
+                if(err){
+                    console.log(err);
+                }
+                else{
+            console.log(allWriting);
+            res.render("writing.ejs",{writing:allWriting,profile:allProfile});
+                }
+        });
+    }
+});
 });
 app.get("/artopedia/music",function(req,res){
     res.render("music.ejs");
@@ -168,11 +202,12 @@ app.post("/artopedia/profile",function(req,res){
     var description = req.body.description;
     var email= req.body.email;
     var phone=req.body.phone;
+    var category=req.body.category;
     var author={
         id:req.user._id,
         username:req.user.username
     }
-var newProfile = {name:name,image:image,description:description,email:email,phone:phone,author:author}
+var newProfile = {name:name,image:image,description:description,email:email,phone:phone,category:category,author:author}
 Profile.create(newProfile,function(err,newlyCreated){
     if(err){
         console.log(err);
@@ -217,7 +252,7 @@ app.get("/artopedia/logout",function(req,res){
 });
 
 app.get("/artopedia/profilee/:id",function(req,res){
-    Profile.findById(req.params.id).populate("art").exec(function(err,foundProfile){
+    Profile.findById(req.params.id).populate("art").populate("writing").exec(function(err,foundProfile){
         if(err){
             console.log(err);
         }else{
@@ -234,12 +269,12 @@ app.get("/artopedia/profilee/:id/art/new",function(req,res){
             console.log(err);
         }
         else{
-            res.render("newArt.ejs",{profile:profile});
+            res.render("newPost.ejs",{profile:profile});
         }
     });
 });
 
-app.post("/artopedia/profilee/:id/art",function(req,res){
+app.post("/artopedia/profilee/:id/art", middleware.checkProfileOwnership,function(req,res){
     Profile.findById(req.params.id, function(err, profile){
         if(err){
             console.log(err);
@@ -267,6 +302,74 @@ app.post("/artopedia/profilee/:id/art",function(req,res){
         }
     });
 });
+
+
+
+app.post("/artopedia/profilee/:id/writing", middleware.checkProfileOwnership,function(req,res){
+    Profile.findById(req.params.id, function(err, profile){
+        if(err){
+            console.log(err);
+            res.redirect("/");
+        } else {
+         Writing.create(req.body.writing, function(err, writing){
+             console.log(req.body.writing);
+            if(err){
+                // req.flash("error", "Something went wrong");
+                console.log(err);
+            } else {
+                //add username and id to comment
+                writing.author.id = req.user._id;
+                writing.author.username = req.user.username;
+
+                //save comment
+                writing.save();
+                profile.writing.push(writing);
+                profile.save();
+                console.log(writing);
+                // req.flash("success", "Successfully added comment");
+                res.redirect("/artopedia/profilee/" + req.params.id);
+            }
+         });
+        }
+    });
+});
+
+// COMMENT EDIT ROUTE
+app.get("/artopedia/profilee/:id/art/:art_id/edit",middleware.checkProfileOwnership, function(req, res){
+    Art.findById(req.params.art_id, function(err, foundArt){
+       if(err){
+           res.redirect("back");
+       } else {
+         res.render("edit.ejs", {profile_id: req.params.id, art: foundArt});
+       }
+    });
+ });
+ 
+ // COMMENT UPDATE
+ app.put("/artopedia/profilee/:id/art/:art_id", middleware.checkProfileOwnership, function(req, res){
+     console.log("Entered");
+    Art.findByIdAndUpdate(req.params.art_id, req.body.art, function(err, updatedArt){
+       if(err){
+           res.redirect("back");
+       } else{
+           res.redirect("/artopedia/profilee/" + req.params.id );
+       }
+    });
+ });
+ 
+ // COMMENT DESTROY ROUTE
+ app.delete("/artopedia/profilee/:id/art/:art_id", middleware.checkProfileOwnership,function(req, res){
+     //findByIdAndRemove
+     Art.findByIdAndRemove(req.params.art_id, function(err){
+        if(err){
+            res.redirect("back");
+        } else {
+            // req.flash("success", "Post deleted");
+            res.redirect("/artopedia/profilee/" + req.params.id);
+        }
+     });
+ });
+ 
 app.listen(3000,function(req,res){
 console.log("Server has started");
 });
