@@ -264,15 +264,25 @@
 }
 
 
-.a1{
+/* .a1{
 	margin-top: 50px;
-}
+} */
 #aa{
 	padding: 25px 120px 25px 80px;
-
+	margin-top: -10px;
+	margin-bottom: 12px;
 }
 #bb{
 	padding:25px 140px 25px 60px;
+	margin-top: -10px;
+	margin-bottom: 10px;
+
+}
+button.btn.btn-3.btn-3e.icon-arrow-right{
+	margin-bottom:2px;
+}
+.ok{
+	margin-top:-18px
 }
 @-webkit-keyframes fadeOutText {
 	0% { color: transparent; }

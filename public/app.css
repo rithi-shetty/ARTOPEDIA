@@ -97,13 +97,17 @@ color:#FFFFFF;
     padding: 0px 10px;
     top:50%;
   }
-  
+
   /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
 
+  @media screen and (max-width: 450px) {
+    .sidenav-right {width: 25px;}
+    .sidenav-right  {font-size: 18px;}
+  }
   .caption{
       text-align:center;
   }
@@ -131,7 +135,7 @@ color:#FFFFFF;
 
 div.gbh{
  width:300px;
- height: 330px;
+ height: 390px;
  
  /* margin-top:40px;
  margin-left: 20px; */
@@ -147,12 +151,39 @@ div.main2 {
 .textarea{
   background: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHCggIBgYKBgYHCAoPBgUJDQ8IFRAWIBEWGyASHxMYHCggJCYlGx8TMjEqJSkrLjo6Fx8/ODMsNygtLisBCgoKDQ0NDw0NDisZFRkrNysrKysrLSsrKysrLSsrKysrKys3KysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIASwAqAMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAAAAQMHAv/EABsQAQEAAgMBAAAAAAAAAAAAAAABEVESMdGx/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQIEAP/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwDrgCmwKFIAClACBFQgAISgFIioQAUhACkqLUIbAMraFCkABSgBAgEABSgBAioQFCkIAUoAQ2AZW0AIAQpACEChAAUoAQItQgSqhSAEIAQ2AZW0AKRFQgAIShQpACEAIKhQgRUKQAhACGwDK2gBSJVSkABCUApASkABCUApEVCAAhACGwDK2ABAlVKQAEIAUiVUpAAQgBSIqEBQpCAFLYBlbShQgRUIAFJQBwEqoQAEIAUiLUICgQgBS2AZm0oUcBFRSQEIACBFRwAFJQAgqLUIEVHAAKWwDM2gBAgFIipSAAgRUIAKUoAQlAIEVHJAFBsAytoARUAKRKqUgAIEVCBKqUpACEAIEVCmgBDYBlbQAipQoUiKhAAQIUKRKqEABCAECLUKaAENgGVtAClKFCBFQgAIShQpEVCAAhACkqLUIoAQ2KFZW0AKUAIEVCAAhKAUiKhABSEAKSoqEABDYoVlbQApQAgQCAApQAgRUIChSEAKUAIACGwDK2gIUgBCBQgAKUAIEWoQJVQpACEAIACGwDK2CKhAAQlChSAEIAQlChAioUgBCAEABDYBlbBKqUgAIQApEVKQAEJQCkRUIAKQgBSAFzYBlbBKqUgAIQApEqpSAAhACkRUIChSEAKQAubUKMrYIqEACkoA4CVUIACEAKRFqECZl6vXavPGTwhczcMzacZ9OM0UrmbQxAuf/9k=");
   background-size:cover;
+  margin-left: 30px;
   background-position: center;
   height:270px;
   width:280px;
   border:solid black 2px;
   color: black;
   font-family: 'Courier Prime', monospace;
+}
+
+.textareaa{
+  background: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHCggIBgYKBgYHCAoPBgUJDQ8IFRAWIBEWGyASHxMYHCggJCYlGx8TMjEqJSkrLjo6Fx8/ODMsNygtLisBCgoKDQ0NDw0NDisZFRkrNysrKysrLSsrKysrLSsrKysrKys3KysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIASwAqAMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAAAAQMHAv/EABsQAQEAAgMBAAAAAAAAAAAAAAABEVESMdGx/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQIEAP/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwDrgCmwKFIAClACBFQgAISgFIioQAUhACkqLUIbAMraFCkABSgBAgEABSgBAioQFCkIAUoAQ2AZW0AIAQpACEChAAUoAQItQgSqhSAEIAQ2AZW0AKRFQgAIShQpACEAIKhQgRUKQAhACGwDK2gBSJVSkABCUApASkABCUApEVCAAhACGwDK2ABAlVKQAEIAUiVUpAAQgBSIqEBQpCAFLYBlbShQgRUIAFJQBwEqoQAEIAUiLUICgQgBS2AZm0oUcBFRSQEIACBFRwAFJQAgqLUIEVHAAKWwDM2gBAgFIipSAAgRUIAKUoAQlAIEVHJAFBsAytoARUAKRKqUgAIEVCBKqUpACEAIEVCmgBDYBlbQAipQoUiKhAAQIUKRKqEABCAECLUKaAENgGVtAClKFCBFQgAIShQpEVCAAhACkqLUIoAQ2KFZW0AKUAIEVCAAhKAUiKhABSEAKSoqEABDYoVlbQApQAgQCAApQAgRUIChSEAKUAIACGwDK2gIUgBCBQgAKUAIEWoQJVQpACEAIACGwDK2CKhAAQlChSAEIAQlChAioUgBCAEABDYBlbBKqUgAIQApEVKQAEJQCkRUIAKQgBSAFzYBlbBKqUgAIQApEqpSAAhACkRUIChSEAKQAubUKMrYIqEACkoA4CVUIACEAKRFqECZl6vXavPGTwhczcMzacZ9OM0UrmbQxAuf/9k=");
+  background-size:cover;
+  /* margin-left: 30px; */
+  background-position: center;
+  height:260px;
+  width:280px;
+  border:solid black 2px;
+  color: black;
+  font-family: 'Courier Prime', monospace;
+}
+
+.formbox input[type="file"] {
+  display: none;
+}
+.signup input[type="file"] {
+  display: none;
+}
+.forimage {
+  border: 1px solid #ccc;
+  background-color: blanchedalmond;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
 }
 
 
