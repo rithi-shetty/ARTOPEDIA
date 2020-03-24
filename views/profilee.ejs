@@ -8,18 +8,35 @@
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail gbh ">
         <img src="<%= art.image %>" alt="Image" style="width:250px;height:260px">
+        <!-- <iframe width="560" height="315" src="<%= art.image %>" frameborder="0" allowfullscreen></iframe>
+      </iframe> -->
           <div class="caption">
-            <p><a href="" class="btn btn-danger btn-md" role="button"><i class="far fa-heart"></i></a> 
+            <p>
+              <span class="tmb"><%= art.name %></span>
+            </p>
+            <p>
+              <em><%= moment(art.createdAt).fromNow() %></em>
+            </p>
+            <!-- <form class="form-inline"> -->
+              <div class="row">
+                <div class="col-xs-3">
               <% if(currentUser && (profile.author.id.equals(currentUser._id))){ %>
                 <a href="/artopedia/profilee/<%= profile._id %>/art/<%= art._id %>/edit" class="btn btn-primary btn-md" role="button"><i class="fas fa-edit"></i></a>
               <% } %>
-              <span class="tmb"><%= art.name %></span>
-              <a href="/artopedia/profilee/<%= profile._id %>" class="btn btn-primary btn-md" role="button"><i class="fas fa-address-card"></i></a></p>
+            </div>
+              <div class="col-xs-3"><a href="" class="btn btn-danger btn-md" role="button"><i class="fas fa-expand"></i></a></div> 
+
+              <div class="col-xs-3">
+              <a href="/artopedia/profilee/<%= profile._id %>" class="btn btn-primary btn-md" role="button"><i class="fas fa-address-card"></i></a></div>
+              <div class="col-xs-3">
               <% if(currentUser && (profile.author.id.equals(currentUser._id))){ %>
-                <form id="delete_post" action="/artopedia/profilee/<%= profile._id %>/art/<%= art._id %>?_method=DELETE" method="POST">
-                  <button style="border: none;" class="btn btn-primary btn-md"><i class="fas fa-trash-alt"></i></button>
+                                <form id="delete_post" action="/artopedia/profilee/<%= profile._id %>/art/<%= art._id %>?_method=DELETE" method="POST">
+                <button style="border: none;" class="btn btn-danger btn-md"><i class="fas fa-trash-alt"></i></button>
                 </form>
+            
               <% } %>
+            </div>
+            </div>
           </div>
         </div>
       </div>
@@ -37,19 +54,34 @@
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail gbh ">
       <% console.log( writing.writing ) %>
-       <textarea class="textarea" readonly noscroll><%= writing.writing %></textarea>
+       <textarea class="textareaa" readonly noscroll><%= writing.writing %></textarea>
           <div class="caption">
-            <p><a href="" class="btn btn-danger btn-md" role="button"><i class="far fa-heart"></i></a> 
-              <% if(currentUser && (profile.author.id.equals(currentUser._id))){ %>
-                <a href="/artopedia/profilee/<%= profile._id %>/writing/<%= writing._id %>/edit" class="btn btn-primary btn-md" role="button"><i class="fas fa-edit"></i></a>
-              <% } %>
+            <p>
               <span class="tmb"><%= writing.name %></span>
-              <a href="/artopedia/profilee/<%= profile._id %>" class="btn btn-primary btn-md" role="button"><i class="fas fa-address-card"></i></a></p>
+            </p>
+            <p>
+              <em><%= moment(writing.createdAt).fromNow() %></em>
+            </p>
+            <!-- <form class="form-inline"> -->
+              <div class="row">
+                <div class="col-xs-3">
+                <% if(currentUser && (profile.author.id.equals(currentUser._id))){ %>
+                  <a href="/artopedia/profilee/<%= profile._id %>/writing/<%= writing._id %>/edit" class="btn btn-primary btn-md" role="button"><i class="fas fa-edit"></i></a>
+                <% } %></div>
+                <div class="col-xs-3">
+                  <a href="" class="btn btn-danger btn-md" role="button"><i class="fas fa-expand"></i></a> </div>
+                <div class="col-xs-3">
+              <a href="/artopedia/profilee/<%= profile._id %>" class="btn btn-primary btn-md" role="button"><i class="fas fa-address-card"></i></a>
+                </div>
+                <div class="col-xs-3">
               <% if(currentUser && (profile.author.id.equals(currentUser._id))){ %>
+               
                 <form id="delete_post" action="/artopedia/profilee/<%= profile._id %>/writing/<%= writing._id %>?_method=DELETE" method="POST">
-                  <button style="border: none;" class="btn btn-primary btn-md"><i class="fas fa-trash-alt"></i></button>
+                  <button style="border: none;" class="btn btn-danger btn-md"><i class="fas fa-trash-alt"></i></button>
                 </form>
-              <% } %>
+           <% } %>
+            </div>
+            </div>
           </div>
         </div>
       </div>
@@ -59,9 +91,115 @@
 <% } %>
 
 
+<% if( profile.category == "Music"){ %>
+  <div class="main2">
+    <div class="row">
+      <% profile.music.forEach(function(music){ %>
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail gbh ">
+         
+        <video width="250px" height="260px" style="margin-left:20px" controls>
+          <source src="<%= music.video %>" type="video/mp4">
+        </video>
+            <div class="caption">
+              <p>
+                <span class="tmb"><%= music.name %></span>
+              </p>
+              <p>
+                <em><%= moment(music.createdAt).fromNow() %></em>
+              </p>
+              <div class="row">
+              <!-- <form class="form-inline"> -->
+                <div class="col-xs-4"> 
+                <% if(currentUser && (profile.author.id.equals(currentUser._id))){ %>
+               <a href="/artopedia/profilee/<%= profile._id %>/music/<%= music._id %>/edit" class="btn btn-primary btn-md" role="button"><i class="fas fa-edit"></i></a>
+                <% } %>
+                </div>
+                <div class="col-xs-4">
+                  <a href="" class="btn btn-danger btn-md" role="button"><i class="fas fa-expand"></i></a> </div>
+                <div class="col-xs-4">
+                <a href="/artopedia/profilee/<%= profile._id %>" class="btn btn-primary btn-md" role="button"><i class="fas fa-address-card"></i></a>
+              </div>
+              <div class="col-xs-4">
+              <% if(currentUser && (profile.author.id.equals(currentUser._id))){ %>
+                  <form id="delete_post" action="/artopedia/profilee/<%= profile._id %>/music/<%= music._id %>?_method=DELETE" method="POST">
+                    <button style="border: none;" class="btn btn-danger btn-md"><i class="fas fa-trash-alt"></i></button>
+                  </form>
+                <!-- </form> -->
+                <% } %>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+  <% } %>
+
+
+
+
+  <% if( profile.category == "Dance"){ %>
+    <div class="main2">
+      <div class="row">
+        <% profile.dance.forEach(function(dance){ %>
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail gbh ">
+           
+          <video width="250px" height="260px" style="margin-left:20px" controls>
+            <source src="<%= dance.video %>" type="video/mp4">
+          </video>
+              <div class="caption">
+                <p>
+                  <span class="tmb"><%= dance.name %></span>
+                </p>
+                <p>
+                  <em><%= moment(dance.createdAt).fromNow() %></em>
+                </p>
+                <div class="row">
+
+                <!-- <form class="form-inline"> -->
+                  
+                  <div class="col-xs-3"> <% if(currentUser && (profile.author.id.equals(currentUser._id))){ %>
+                      
+                        <a href="/artopedia/profilee/<%= profile._id %>/dance/<%= dance._id %>/edit" class="btn btn-primary btn-md" role="button"><i class="fas fa-edit"></i></a>
+                     
+                        <% } %> </div>
+                        <div class="col-xs-3"> <a href="<%= dance.video %>" class="btn btn-danger btn-md" role="button"><i class="fas fa-expand"></i></a></div> 
+
+
+                        <div class="col-xs-3">
+                          <a href="/artopedia/profilee/<%= profile._id %>" class="btn btn-primary btn-md" role="button"><i class="fas fa-address-card"></i></a>
+                              </div>
+                        <div class="col-xs-3">
+                  <% if(currentUser && (profile.author.id.equals(currentUser._id))){ %>
+                 
+                    <form id="delete_post" action="/artopedia/profilee/<%= profile._id %>/dance/<%= dance._id %>?_method=DELETE" method="POST">
+                      <button style="border: none;" class="btn btn-danger btn-md"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                  <% } %>
+                </div>
+               
+                      
+                
+                    </div>
+                  </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+    <% } %>
+
+
+
+
+
+
 <div class="sidenav-right">
   <div class="profile" >
-    <img src="<%= profile.image %>">
+    <img src="<%= profile.image %>" style="width:250px;height:260px">
     <h3 ><%= profile.name %></h3>
     <p><%= profile.description %></p>
     <br><br>
@@ -69,7 +207,18 @@
       <p><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>    <%= profile.phone %></p>
       <p><i class="fa fa-envelope" aria-hidden="true"></i>    <%= profile.email %></p>
      <% if(currentUser && (profile.author.id.equals(currentUser._id))){ %>
-      <a class="btn btn-primary btn-large" href="/artopedia/profilee/<%= profile._id %>/art/new">Add New</a>
+      <a class="btn btn-primary btn-large" href="/artopedia/profilee/<%= profile._id %>/dance/new">NEW POST</a>
+      <br>
+      <a class="btn btn-secondary btn-large" href="/artopedia/profilee/<%= profile._id %>/edit"><i class="fas fa-user-edit"></i>EDIT</a>
       <% } %>
+      
+      <buttton class="btn btn-primary btn-large bottom" href="#" style="margin-left:240px" onClick="scrollToBottom()"><i class="fas fa-angle-double-down"></i></buttton>
+
     </div>
+<script>
+scrollingElement = (document.scrollingElement || document.body)
+function scrollToBottom () {
+   scrollingElement.scrollTop = scrollingElement.scrollHeight;
+}
+</script>
 <%- include ("partials/footer.ejs") %>

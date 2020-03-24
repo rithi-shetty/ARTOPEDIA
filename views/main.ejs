@@ -26,10 +26,13 @@
                     <% profile.forEach(function(pr){ %>
                         <% console.log(pr.author.username) %>
                         <% if ((pr.author.username) == (currentUser.username)) {%>
+                            <% console.log(pr._id) %>
+
+                            <a href="/artopedia/profilee/<%= pr._id %>"><button class="btn btn-3 btn-3e icon-arrow-right ok">PROFILE</button></a>
+
                             <% id=pr._id ;%>
                         <% } %>
                     <% }); %>
-                    <a href="/artopedia/profilee/<%= id %>"><button class="btn btn-3 btn-3e icon-arrow-right">GOTO</button></a>
                     <!-- <a class="btn btn-primary btn-large" href="/artopedia/profilee/<%= id %>">Profile</a> -->
                     <% } %>
                 </div>

@@ -1,0 +1,72 @@
+<%- include ("partials/header.ejs") %>
+<% var id; %>
+<% var id2; %>
+<!-- <div>
+<div class="list-group" id="sidebar" >
+    <a href="#" class="list-group-item list-group-item-action active">
+      Rithika U Shetty
+    </a>
+    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+    <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+  </div> -->
+  <div class="sidenav">
+    <a href="/artopedia/music">ALL POSTS</a>
+    <a href="/artopedia/music/Sad">SAD</a>
+    <a href="/artopedia/music/Love">LOVE</a>
+    <a href="/artopedia/music/Friendship">FRIENDSHIP</a>
+    <a href="/artopedia/music/Patriotic">PATRIOTIC</a>
+    <a href="/artopedia/music/Life">LIFE</a>
+    <a href="/artopedia/music/Others">OTHERS</a>
+  </div>
+  <div class="main">
+    <div class="roww">
+      <% music.forEach(function(music){ %>
+        <div class="col-sm-6 col-md-4">
+          <% profile.forEach(function(profile){ %>
+            <% if (profile.author.username == music.author.username) { %>
+              <% id=profile._id %>
+              <% id2=profile.author.id %>
+            <% } %>
+          <% }); %>
+      
+          <div class="thumbnail">
+            <video width="250px" height="260px" style="margin-left:40px" controls>
+            <source src="<%= music.video %>" type="video/mp4">
+            </video>
+            <div class="caption">
+              <p> 
+                <span class="tmb"><%= music.name %></span>
+              </p>
+              <p>
+                <em><%= moment(music.createdAt).fromNow() %></em>
+              </p>
+              <div class="row">
+               
+                <div class="col-xs-3">
+                  <% if(currentUser && (id2.equals(currentUser._id))){ %>
+                    <a href="/artopedia/profilee/<%= id %>/music/<%= music._id %>/edit" class="btn btn-primary btn-md" role="button"><i class="fas fa-edit"></i></a>
+                  <% } %>
+                </div>
+                <div class="col-xs-3">
+                  <a href="#" class="btn btn-danger btn-md" role="button" ><i class="fas fa-expand"></i></a> 
+                </div>
+                <div class="col-xs-3">
+                  <a href="/artopedia/profilee/<%= id %>" class="btn btn-primary btn-md" role="button"><i class="fas fa-address-card"></i></a>
+                </div>
+                <div class="col-xs-3">
+                  <% if(currentUser && (id2.equals(currentUser._id))){ %>
+                    <form id="delete_post" action="/artopedia/profilee/<%= id %>/music/<%= music._id %>?_method=DELETE" method="POST">
+                      <button style="border: none;" class="btn btn-danger btn-md"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+<%- include ("partials/footer.ejs") %>

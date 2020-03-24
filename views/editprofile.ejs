@@ -1,0 +1,26 @@
+<%- include ("partials/header.ejs") %>
+
+<h1>   </h1>
+<div class="title" ><h1>    ,     </h1></div>
+<div class="c1" style="height: 580px;">
+    <h2 >Edit Profile</h2>
+    <form class="formbox" action="/artopedia/profilee/<%= profile._id %>/edit?_method=PUT" method="POST">
+      
+            <label style="text-align: left;">Name:</label>
+            <input class="form-control" type="text" name="profile[name]" value="<%= profile.name %>">
+            <label style="text-align: left;">Description:</label>
+            <input class="form-control" type="text" name="profile[description]" value="<%= profile.description %>">
+            <label style="text-align: left;">Phone No:</label>
+            <input class="form-control" type="number" name="profile[phone]" value="<%= profile.phone %>">
+            <label style="text-align: left;">Email Id:</label>
+            <input class="form-control" type="email" name="profile[email]" value="<%= profile.email %>">
+              
+       
+        <button style="background-color: rgb(2, 23, 32);border-radius:50px;" class="btn btn-3 btn-3e icon-arrow-right">SUBMIT</button>
+    
+       
+    </form>
+</div>
+<%- include ("partials/footer.ejs") %>
+
+ 

@@ -1,33 +1,127 @@
 <%- include ("partials/header.ejs") %>
-<div class="container">
-    <div class="row">
-        <h1 style="text-align: center">Edit Post</h1>
-        <div style="width: 30%; margin: 25px auto;">
-            <form action="/artopedia/profilee/<%= profile_id %>/art/<%= art._id %>?_method=PUT" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="art[name]" value="<%= art.name %>">
-                </div>
-                <div>
-                    <!-- <select name="art[category]"  id="Category"  required>
-                        <option selected><%= art.category %></option>
-                        <option>Nature</option>
-                        <option>Folk</option>
-                        <option>Abstract</option>
-                        <option>Portrait</option>
-                        <option>Others</option>
-                    </select> -->
-                    <input type="radio" name="art[category]" value="Nature">Nature
+
+<h1>   </h1>
+<div class="title" ><h1>    ,     </h1></div>
+<div class="c1">
+    <h2 >Edit Post</h2>
+    <% if( profile.category == "Art"){ %>
+    <form class="formbox" action="/artopedia/profilee/<%= profile._id %>/art/<%= art._id %>?_method=PUT" method="POST">
+      
+            <label style="text-align: left;">Name:</label>
+            <input class="form-control" type="text" name="art[name]" value="<%= art.name %>">
+      
+        <div>
+            <label>Choose type:</label><br><br>
+            <label>
+            <input type="radio" name="art[category]" value="Nature">Nature
             <input type="radio" name="art[category]" value="Folk">Folk
+            
             <input type="radio" name="art[category]" value="Portrait">Portrait
+            <br>
             <input type="radio" name="art[category]" value="Abstract">Abstract
+            
             <input type="radio" name="art[category]" value="Others">Others
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
-                </div>
-            </form>
-            <a href="/">Go Back</a>
+        </label>
         </div>
-    </div>
+        <br>
+       
+        <button style="background-color: rgb(2, 23, 32);border-radius:50px;" class="btn btn-3 btn-3e icon-arrow-right">SUBMIT</button>
+    
+       
+    </form>
+   <!-- <a href="/"><p style="color:black;font-size:15px;">Go Back</p></a>  -->
 </div>
+ 
+<% } %>
+
+
+<!-- 
+    <div class="container">
+        <div class="row">
+            <br><br>
+            <h1 style="text-align: center">Edit Post</h1>
+            <div style="width: 30%; margin: 25px auto;"> -->
+                <% if(profile.category == "Writing"){ %>
+                <form class="formbox" action="/artopedia/profilee/<%= profile._id %>/writing/<%= writing._id %>?_method=PUT" method="POST">
+                    <!-- <label style="text-align: left;">NAME:</label> -->
+                        <input class="form-control" type="text" name="writing[name]" value="<%= writing.name %>">
+                   
+                    <div style="display:inline-block;text-align: left;">
+                        <label>CHOOSE TYPE:</label><br><br></bold>
+                        <label>
+                        <input type="radio" name="writing[category]" value="Friendship">Friendship
+                        <input type="radio" name="writing[category]" value="Life">Life
+                        
+                        <input type="radio" name="writing[category]" value="Nature">Nature<br>
+                       
+                      
+                        <input type="radio" name="writing[category]" value="Patriotic">Patriotic
+                        <input type="radio" name="writing[category]" value="Love">Love
+                        <input type="radio" name="writing[category]" value="Others">Others
+                        </label>
+                    </div>
+                    <br>
+        <button style="background-color: rgb(2, 23, 32);border-radius:50px;" class="btn btn-3 btn-3e icon-arrow-right">SUBMIT</button>
+                  
+                </form>
+               
+            </div>
+    
+<% } %>
+
+
+<% if( profile.category == "Music"){ %>
+  
+                <form  class="formbox" action="/artopedia/profilee/<%= profile._id %>/music/<%= music._id %>?_method=PUT" method="POST">
+                 
+                        <input class="form-control" type="text" name="music[name]" value="<%= music.name %>">
+                 
+                    <div style="display:inline-block;text-align: left;">
+                        <label>CHOOSE TYPE:</label><br><br></bold>
+                        <label>
+                        <input type="radio" name="music[category]" value="Sad">Sad
+                        <input type="radio" name="music[category]" value="Love">Love
+                        <input type="radio" name="music[category]" value="Friendship">Friendship
+                        <br>
+                        <input type="radio" name="music[category]" value="Patriotic">Patriotic
+                        <input type="radio" name="music[category]" value="Life">Life
+                        <input type="radio" name="music[category]" value="Others">Others
+                        </label>
+                    </div>
+                 <br>
+                 <button style="background-color: rgb(2, 23, 32);border-radius:50px;" class="btn btn-3 btn-3e icon-arrow-right">SUBMIT</button>
+
+                </form>
+                <!-- <a href="/artopedia/profilee/<%= profile._id %>">My profile</a> -->
+            </div>
+    
+    <% } %>
+
+    <% if( profile.category == "Dance"){ %>
+        
+                    <form class="formbox" action="/artopedia/profilee/<%= profile._id %>/dance/<%= dance._id %>?_method=PUT" method="POST">
+                      
+                            <input class="form-control" type="text" name="dance[name]" value="<%= dance.name %>">
+                       
+                            <div style="display:inline-block;text-align: left;">
+                                <label>CHOOSE TYPE:</label><br><br></bold>
+                                <label>
+                            <input type="radio" name="dance[category]" value="Hip-Hop">Hip Hop
+                            <input type="radio" name="dance[category]" value="Bharatnatyam">Bharatnatyam
+                            <br>
+                            <input type="radio" name="dance[category]" value="Ballet">Ballet
+                            <input type="radio" name="dance[category]" value="Contemporary">Contemporary
+                            <br>
+                            <input type="radio" name="dance[category]" value="Yakshagana">Yakshagana
+                            <input type="radio" name="dance[category]" value="Others">Others
+                            </label>
+                        </div>
+                        <br>
+                        <button style="background-color: rgb(2, 23, 32);border-radius:50px;" class="btn btn-3 btn-3e icon-arrow-right">SUBMIT</button>
+
+                    </form>
+                    <!-- <a href="/artopedia/profilee/<%= profile._id %>">My profile</a> -->
+                </div>
+         
+        <% } %>
 <%- include ("partials/footer.ejs") %>

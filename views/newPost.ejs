@@ -2,9 +2,11 @@
 <div class="signup">
     <% console.log(profile.category) %>
     <% if(profile.category == "Art"){ %>
-    <form action="/artopedia/profilee/<%= profile._id %>/art" method="post" >
-        <input type="text" name="art[name]" placeholder="Title">
-        <input type="text" name="art[image]" placeholder="imageURL">
+    <form action="/artopedia/profilee/<%= profile._id %>/art" method="post" enctype="multipart/form-data" >
+        <input type="text" name="art[name]" placeholder="Title"><br>
+        <label for="image" class="forimage">Choose image
+        <input type="file" id="image" name="art[image]" accept="image/*" required style="background-color: black;">
+        </label>
         <select name="art[category]" id="Category" required>
             <option>Nature</option>
             <option>Folk</option>
@@ -32,6 +34,48 @@
             <button>SUBMIT</button>
         </form> 
         <% } %>
+
+
+        <% if(profile.category == "Music"){ %>
+            <form action="/artopedia/profilee/<%= profile._id %>/music" method="post" enctype="multipart/form-data" >
+                <input type="text" name="music[name]" placeholder="Title"><br>
+                <label for="image" class="forimage">Choose image
+                <input type="file" id="image" name="music[video]" accept="video/*" required >
+                </label>
+                <select name="music[category]" id="Category" required>
+                    <option>Sad</option>
+                    <option>Love</option>
+                    <option>Friendship</option>
+                    <option>Patriotic</option>
+                    <option>Life</option>
+                    <option>Others</option>
+                </select>
+                
+                <button>SUBMIT</button>
+            </form>
+            <% } %>
+
+
+            <% if(profile.category == "Dance"){ %>
+                <form action="/artopedia/profilee/<%= profile._id %>/dance" method="post" enctype="multipart/form-data" >
+                    <input type="text" name="dance[name]" placeholder="Title"><br>
+                    <label for="image" class="forimage">Choose image
+                    <input type="file" id="image" name="dance[video]" accept="video/*" required >
+                    </label>
+                    <select name="dance[category]" id="Category" required>
+                        <option>Hip-hop</option>
+                        <option>Bharatnatyam</option>
+                        <option>Ballet</option>
+                        <option>Contemporary</option>
+                        <option>Yakshagana</option>
+                        <option>Others</option>
+                    </select>
+                    
+                    <button>SUBMIT</button>
+                </form>
+                <% } %>
+
+
 </div>
 
 <%- include ("partials/footer.ejs") %>

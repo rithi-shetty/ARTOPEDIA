@@ -12,7 +12,7 @@
     <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
   </div> -->
   <div class="sidenav">
-    <a href="/artopedia/art/toppost">TOP POSTS</a>
+    <a href="/artopedia/writing">ALL POSTS</a>
     <a href="/artopedia/writing/Nature">NATURE</a>
     <a href="/artopedia/writing/Love">LOVE</a>
     <a href="/artopedia/writing/Friendship">FRIENDSHIP</a>
@@ -32,31 +32,54 @@
         <% }); %>
       
       <div class="thumbnail">
-        <textarea class="textarea" readonly noscroll><%= writing.writing %></textarea>
+        <textarea class="textarea" readonly noscroll id="copy"><%= writing.writing %></textarea>
         <div class="caption">
-         
-         
-          <p><a href="#" class="btn btn-danger btn-md" role="button" ><i class="far fa-heart"></i></a> 
-            <% if(currentUser && (id2.equals(currentUser._id))){ %>
+          <p>
+            <span class="tmb"><%= writing.name %></span>
+          </p>
+          <p>
+            <em><%= moment(writing.createdAt).fromNow() %></em>
+          </p>
+          <!-- <form class="form-inline"> -->
+            <!-- <button style="border: none;" class="btn btn-danger btn-md"  onclick= copy()><i class="far fa-heart"></i></button> -->
+          <div class="row">
+            
+            <div class="col-xs-3">
+
+          <% if(currentUser && (id2.equals(currentUser._id))){ %>
             <a href="/artopedia/profilee/<%= id %>/writing/<%= writing._id %>/edit" class="btn btn-primary btn-md" role="button"><i class="fas fa-edit"></i></a>
            <% } %>
-            <span class="tmb"><%= writing.name %></span>
-         
-            <a href="/artopedia/profilee/<%= id %>" class="btn btn-primary btn-md" role="button"><i class="fas fa-address-card"></i></a>
-            <% if(currentUser && (id2.equals(currentUser._id))){ %>
+          </div>
+          <div class="col-xs-3">
+
+            <a href="/artopedia/writing/big/<%= writing._id %>" class="btn btn-danger btn-md" role="button" ><i class="fas fa-expand"></i></a> 
+              </div>
+          <div class="col-xs-3">
+                    <a href="/artopedia/profilee/<%= id %>" class="btn btn-primary btn-md" role="button"><i class="fas fa-address-card"></i></a>
+          </div>
+          <div class="col-xs-3">
+
+                    <% if(currentUser && (id2.equals(currentUser._id))){ %>
             
             <form id="delete_post" action="/artopedia/profilee/<%= id %>/writing/<%= writing._id %>?_method=DELETE" method="POST">
             
-           <button style="border: none;" class="btn btn-primary btn-md"><i class="fas fa-trash-alt"></i></button>
+           <button style="border: none;" class="btn btn-danger btn-md"><i class="fas fa-trash-alt"></i></button>
 
             </form>
+          <!-- </form> -->
            <% } %>
-            
-
+          </div>
+          </div>
           </div>
       </div>
     </div>
     <% }); %>
   </div>
 </div>
+<script>
+function copy(){
+  document.querySelector("textarea").select();
+  document.execCommand('copy');
+}
+</script>
 <%- include ("partials/footer.ejs") %>

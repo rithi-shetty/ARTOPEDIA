@@ -1,10 +1,18 @@
 <%- include ("partials/header.ejs") %>
-<div class="signup">
-    <form action="/artopedia/login" method="post" >
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
-        <button>LOGIN</button>
-    </form> 
-</div>
+	<h6>   </h6>
+	<div class="title" ><h6>    ,     </h6></div>
+	<div class="c">
+		<h2>LOGIN</h2>
+		<div class="formbox">
+			<form action="/artopedia/login" method="post" >
+				<input type="text"  name="username" placeholder="  USERNAME" required></br></br>
+				<input type="Password" name="password" placeholder="  PASSWORD" required>
+				</br></br></br>
+				<a href="/artopedia/music"><button style="background-color: rgb(2, 23, 32);border-radius:50px;" class="btn btn-3 btn-3e icon-arrow-right">LOGIN</button></a>
+				<br><br><br/>
+            	<p style="color:black;font-size:15px;">Aren't a Member? <a href="/artopedia/register">SIGNUP</a></p>
+			</form>		
+		</div>
+	</div>
 
 <%- include ("partials/footer.ejs") %>
